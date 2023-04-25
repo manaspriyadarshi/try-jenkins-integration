@@ -6,6 +6,7 @@ node('fdf-node') {
     sh "pip3 install coverage"
     sh  "coverage run squareroot.py"
     sh  "coverage report -m"
+    sh  "coverage xml "
     def scannerHome = tool 'sonarscanner';
     withSonarQubeEnv() {
       sh "${scannerHome}/bin/sonar-scanner"
