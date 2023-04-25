@@ -7,9 +7,11 @@ node('fdf-node') {
     sh  "coverage run squareroot.py"
     sh  "coverage report -m"
     sh  "coverage xml "
+    archiveArtifacts artifacts: 'coverage.xml'
     def scannerHome = tool 'sonarscanner';
     withSonarQubeEnv() {
       sh "${scannerHome}/bin/sonar-scanner"
+    
     }
   }
 }
