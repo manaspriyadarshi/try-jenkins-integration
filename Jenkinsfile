@@ -8,7 +8,7 @@ node('fdf-node') {
     sh  "coverage report -m"
     sh  "coverage xml "
     archiveArtifacts artifacts: 'coverage.xml'
-    sh "cp ./coverage.xml {$env.WOKRSPACE}/"
+    sh "cp ./coverage.xml ${env.WOKRSPACE}/"
     def scannerHome = tool 'sonarscanner';
     withSonarQubeEnv() {
       sh "${scannerHome}/bin/sonar-scanner"
