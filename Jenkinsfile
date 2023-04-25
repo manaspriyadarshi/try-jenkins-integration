@@ -8,6 +8,7 @@ node('fdf-node') {
     sh  "coverage report -m"
     sh  "coverage xml "
     archiveArtifacts artifacts: 'coverage.xml'
+    sh "cp coverage.xml /var/jenkins_home/workspace/pipe_2"
     def scannerHome = tool 'sonarscanner';
     withSonarQubeEnv() {
       sh "${scannerHome}/bin/sonar-scanner"
